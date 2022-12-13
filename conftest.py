@@ -1,6 +1,6 @@
 """
 coding:utf-8
-@Software:用来专门定义类前置、后置，用例级别前置后置方法  【注：文件名必须叫做 conftest.py】
+@Software:pytest中用来专门定义类前置、后置，用例级别前置后置方法  【注：文件名必须叫做 conftest.py】
 @Time:2022/9/7 18:42
 @Author:liaoqin
 """
