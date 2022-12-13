@@ -1,6 +1,6 @@
 """
 coding:utf-8
-@Software:封装测试用例所需前置（类级别前置、用例级别前置）的方法
+@Software:用于unittest封装测试用例所需前置（类级别前置、用例级别前置）的方法
 @Time:2022/8/30 14:36
 @Author:liaoqin
 """
