@@ -8,11 +8,11 @@ coding:utf-8
 import pytest
 
 # pytest.main()
-pytest.main([
-            'testcases/test_01register.py',
-            'testcases/test_02login.py',
+pytest.main(['-vs',
+            # 'testcases/test_01_safe.py',
+            # 'testcases/test_02_add.py',
             #  'testcases/test_03recharge.py',
-            #  'testcases/test_04withdraw.py',
+             'testcases/test_04_delete.py',
             #  'testcases/test_05add_audit.py',
             #  'testcases/test_06audit.py',
             # 'testcases/test_07invest.py',
