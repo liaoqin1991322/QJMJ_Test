@@ -6,6 +6,12 @@ coding:utf-8
 """
 import re, random
 from common.handle_conf import conf
+from faker import Faker
+
+f = Faker(locale='zh_CN')
+
+def random_name():
+    return f.name()
 
 
 def replace_data(data, cls, re_ex):
@@ -45,3 +51,4 @@ def random_phone():
 #     s = '{"id":"#id#","name":"#name#","data":"#data#","title":"#title#"}'
 #     s = replace_data(s,TestCase,'#(.+?)#')
 #     print(s)
+

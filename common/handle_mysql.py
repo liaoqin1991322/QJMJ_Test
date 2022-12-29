@@ -86,4 +86,7 @@ db = HandleDB(conf.get("mysql", "host"),
 #     # # res1 = db.find_all(py_sql)
 #     # #res1 = db.find_count(py_sql)
 #     print(res1['leave_amount'],type(res1))
+if __name__ == '__main__':
+    sql_id = db.find_one('SELECT policy_name from monitor_security_group WHERE id = 123')
+    print(type(sql_id))
 
