@@ -62,7 +62,7 @@ def qjmj_login_cls():#1、定义类用例前置
     """"""
     #登录成功，取返回
     headers = {
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI2ZDk0NjVlYTc4MjE0ZmNjOWYyNGZlOTdiNTIxYjYxMCIsInVzZXIiOiJjYW96dW8iLCJyb2xlIjoi57O757uf5pON5L2c5ZGYIiwic3ViIjoiY2FvenVvIn0.9g_SESe1f8hOT1_9zICY_Rd7PdYR5rVhOAPvbw5hr9RKenpfBlu0A3kxMpRCQiP3IyWSZPnvDAokrPluMdJdhw",
+        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI2MWY1YTE1NjkyYWU0YzJiYTc1MTI2ZTUyYTM3MTlmZiIsInVzZXIiOiJjYW96dW8iLCJyb2xlIjoi57O757uf5pON5L2c5ZGYIiwic3ViIjoiY2FvenVvIn0.Cpi0edw7G940l16Csp3T7TIfE5rCCK-1zrWWbMtK44fkXRr4qfkNwi5kj0Z_7DJi6Y04V02lfFBr0vzn4qfRfQ",
         'Content-Type': 'application/json'
     }
 

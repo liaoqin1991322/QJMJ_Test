@@ -10,38 +10,36 @@ from common.handle_conf import conf
 from common.handle_mysql import db
 from common.handle_log import my_log
 from common.tools import random_name
+from common.handle_mysql import my_key
 import os, pytest, requests
-
 
 class TestAdd:
     r_name = random_name()
-    excel = HandleExcel(os.path.join(DATA_DIR, 'QCD.xlsx'), 'add_safe')
+    excel = HandleExcel(os.path.join(DATA_DIR, 'QCD.xlsx'), 'add')
     datas = excel.read_excel_data()
     base_url = conf.get('server_info', 'server_url')
 
     @pytest.mark.parametrize('item', datas)
-    def test_add_safe(self, item, qjmj_login_cls):
+    def test_add(self, item, qjmj_login_cls):
 
         url = self.base_url + item['url']
-        headers = getattr(qjmj_login_cls,'headers')
+        headers = getattr(qjmj_login_cls, 'headers')
 
-        item['data'] = item['data'].replace('#paramDC#',self.r_name)
+        item['data'] = item['data'].replace('#name#', self.r_name)
         payload = eval(item['data'])
         method = item['method']
-        response = requests.request(url=url, headers=headers, json=payload, method=method)
-        res = response.json()
-        item['excepted'] = item['excepted'].replace('#paramDC#',self.r_name)
+        requests.request(url=url, headers=headers, json=payload, method=method)
+        item['excepted'] = item['excepted'].replace('#name#', self.r_name)
         excepted = eval(item['excepted'])
 
         try:
-            assert res['policyName'] == excepted['policyName']
             if item['check_sql']:
-                count = db.find_one(item['check_sql'])
-                assert count['policy_name'] == excepted['policyName']
+                a_name = db.find_one(item['check_sql'])
+                assert my_key(a_name) == excepted['name']
             my_log.info("用例：{} ----用例成功".format(item['title']))
         except Exception as e:
 
-            my_log.error(f"用例：{item['title']} ----用例失败")
+            my_log.error("用例：{} ----用例失败".format(item['title']))
             my_log.exception(e)
 
             raise e

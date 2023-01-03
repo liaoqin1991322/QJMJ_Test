@@ -13,14 +13,14 @@ from common.handle_path import DATA_DIR
 
 
 
-class TestSafe:
+class TestSelect:
     #第一步：从excel读数据
-    excel = HandleExcel(os.path.join(DATA_DIR, 'QCD.xlsx'), 'select_safe')
+    excel = HandleExcel(os.path.join(DATA_DIR, 'QCD.xlsx'), 'select')
     datas = excel.read_excel_data()
     base_url = conf.get("server_info","server_url")
 
     @pytest.mark.parametrize('item', datas)
-    def test_select_safe(self, item, qjmj_login_cls):#4、qjmj_login调用类登录前置方法
+    def test_select(self, item, qjmj_login_cls):#4、qjmj_login调用类登录前置方法
         """
         登录
         :return:
@@ -36,12 +36,10 @@ class TestSafe:
         #第三步：发送请求
         response = requests.request(method=method,url=url,json=payload,headers=headers)
         res = response.json()
-        # excepted = eval(item['excepted'])
 
 
         #第四步：断言
         try:
-            # assert res['totalElements'] == excepted['totalElements']
             if item['check_sql']:
                 count = db.find_count(item['check_sql'])
                 assert res['totalElements'] == count
@@ -51,6 +49,10 @@ class TestSafe:
             my_log.error("用例：{} ----用例失败".format(item['title']))
             my_log.exception(e)
             raise e
+
+
+
+
 
 
 

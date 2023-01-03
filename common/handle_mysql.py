@@ -78,6 +78,10 @@ db = HandleDB(conf.get("mysql", "host"),
               conf.get("mysql", "database")
               )
 
+def my_key(dic):
+    return list(dic.values())[0]
+
+
 # if __name__ == '__main__':
 #     py_sql = "select leave_amount from member t  where t.mobile_phone=13888887788"
 #     db = HandleDB(conf.get("mysql", "host"), int(conf.get("mysql", "port")), conf.get("mysql", "user"),
@@ -87,6 +91,6 @@ db = HandleDB(conf.get("mysql", "host"),
 #     # #res1 = db.find_count(py_sql)
 #     print(res1['leave_amount'],type(res1))
 if __name__ == '__main__':
-    sql_id = db.find_one('SELECT policy_name from monitor_security_group WHERE id = 123')
-    print(type(sql_id))
+    a = {'xiao': None}
+    print(my_key(a))
 
